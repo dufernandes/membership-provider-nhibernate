@@ -1,0 +1,52 @@
+<%@ Master Language="C#" %>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<script runat="server">
+</script>
+
+<html xmlns="http://www.w3.org/1999/xhtml" >
+<head runat="server">
+    <title>Rolling Our Own Website Administration Tool</title>
+	<link type="text/css" href="~/StyleSheet.css" rel="stylesheet" />
+</head>
+<body>
+	<form id="form1" runat="server">
+	
+	
+	<asp:LoginView ID="LoginStatus1" runat="server">
+		<AnonymousTemplate>
+			<a href="/Simple/login.aspx">Login</a>
+		</AnonymousTemplate>
+		<LoggedInTemplate>
+			<asp:LoginName ID="LoginName1" runat="server" FormatString="Welcome, {0}" />&nbsp;&nbsp;
+            <td><asp:HyperLink ID="HyperLink1" Text="Logout" NavigateUrl="~/logout.aspx" runat="server" /> </td>
+		</LoggedInTemplate>
+	</asp:LoginView>
+	<br />
+	<br />
+	
+	<table class="gnav">
+	<tr>
+        <td><asp:HyperLink ID="link1" Text="Home" NavigateUrl="~/Default.aspx" runat="server" /> </td>
+        <td><asp:HyperLink ID="HyperLink1" Text="Admin" NavigateUrl="~/admin/access/access_rules.aspx" runat="server" /> </td>
+		<td><asp:HyperLink ID="HyperLink2" Text="Management" NavigateUrl="~/management/management.aspx" runat="server" /> </td>
+		<td><asp:HyperLink ID="HyperLink3" Text="Personnel" NavigateUrl="~/personnel/personnel.aspx" runat="server" /> </td>
+		<td><asp:HyperLink ID="HyperLink4" Text="Sales" NavigateUrl="~/sales/sales.aspx" runat="server" /> </td>
+		<td><asp:HyperLink ID="HyperLink5" Text="Marketing" NavigateUrl="~/marketing/marketing.aspx" runat="server" /> </td>
+        <td><asp:HyperLink ID="HyperLink6" Text="Purchasing" NavigateUrl="~/purchasing/purchasing.aspx" runat="server" /> </td>
+		<td><asp:HyperLink ID="HyperLink7" Text="IT" NavigateUrl="~/it/it.aspx" runat="server" /> </td>
+	</tr>
+	</table>
+
+	<hr />
+	
+	
+        <asp:contentplaceholder id="c" runat="server">
+        
+        </asp:contentplaceholder>
+    </form>
+    
+    <asp:Literal runat="server" ID="SecurityDisclosure"></asp:Literal>
+</body>
+</html>

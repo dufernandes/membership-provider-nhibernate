@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2" namespace="AutenthicationAuthorization.VO" assembly="AutenthicationAuthorization">
+
+  <class name="CustomUser" table="MP_USER" >
+
+    <!-- Primary Key(s) -->
+    <id name="Id" column="ID">
+      <generator class="guid" />
+    </id>
+
+    <property name="Name" column="NAME" not-null="true" />
+    <property name="Password" column="PASSWORD" not-null="true" />
+    <property name="Email" column="EMAIL" />
+    <property name="Comment" column="USER_COMMENT" />
+    <property name="PasswordQuestion" column="PASSWD_QUESTION" />
+    <property name="PasswordAnswer" column="PASSWD_ANSWER" />
+    <property name="IsApproved" column="IS_APPROVED" />
+    <property name="LastActivityDate" column="LAST_ACTIVITY_DATE" />
+    <property name="LastLoginDate" column="LAST_LOGIN_DATE" />
+    <property name="LastPasswordChangedDate" column="LAST_PASSWD_CHANGED_DATE" />
+    <property name="CreationDate" column="CREATION_DATE" />
+    <property name="LastUpdateDate" column="LAST_UPDATE_DATE" not-null="true" />
+    <property name="IsOnline" column="IS_ONLINE" />
+    <property name="IsLockedOut" column="IS_LOCKED_OUT" />
+    <property name="LastLockedOutDate" column="LAST_LOCKED_OUT_DATE" />
+    <property name="FailedPasswordAttemptCount" column="FAIL_PASSWD_TRY_COUNT" />
+    <property name="FailedPasswordAttemptWindowStart" column="FAIL_PASSWD_TRY_WIN_START" />
+    <property name="FailedPasswordAnswerAttemptCount" column="FAIL_PASSWD_ANS_TRY_COUNT" />
+    <property name="FailedPasswordAnswerAttemptWindowStart" column="FAIL_PASSWD_ANS_TRY_WIN_START" />
+
+    <many-to-one name="MembershipApplication" column="MEMEBERSHIP_APPLICATION_ID" not-null="true" />
+
+    <set name="Roles" cascade="none" table="MP_USER__MP_ROLE" lazy="true">
+      <key column="USER_CUSTOM_ID"/>
+      <many-to-many class="CustomRole" column="ROLE_CUSTOM_ID" not-found="ignore" />
+    </set>
+
+  </class>
+</hibernate-mapping>

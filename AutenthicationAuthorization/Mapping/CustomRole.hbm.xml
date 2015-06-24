@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2" namespace="AutenthicationAuthorization.VO" assembly="AutenthicationAuthorization">
+
+  <class name="CustomRole" table="MP_ROLE" >
+
+    <!-- Primary Key(s) -->
+    <id name="Id" column="ID">
+      <generator class="identity" />
+    </id>
+
+    <property name="Name" column="NAME" not-null="true" />
+    <property name="CreationDate" column="CREATION_DATE" not-null="true" />
+    <property name="LastUpdateDate" column="LAST_UPDATE_DATE" not-null="true" />
+
+    <set name="Users" cascade="none" table="MP_USER__MP_ROLE" lazy="true">
+      <key column="ROLE_CUSTOM_ID"/>
+      <many-to-many class="CustomUser" column="USER_CUSTOM_ID" not-found="ignore" />
+    </set>
+
+    <many-to-one name="MembershipApplication" column="MEMEBERSHIP_APPLICATION_ID" not-null="true" />
+
+  </class>
+</hibernate-mapping>

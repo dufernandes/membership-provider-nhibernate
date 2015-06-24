@@ -1,0 +1,103 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{CA34B9C8-BF69-4520-B0B1-64F4F79D3855}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>AutenthicationAuthorization</RootNamespace>
+    <AssemblyName>AutenthicationAuthorization</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Iesi.Collections">
+      <HintPath>..\MembershipAdministration\packages\Iesi.Collections.4.0.0.4000\lib\net40\Iesi.Collections.dll</HintPath>
+    </Reference>
+    <Reference Include="NHibernate">
+      <HintPath>..\MembershipAdministration\packages\NHibernate.4.0.3.4000\lib\net40\NHibernate.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Transactions" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="CryptographyManager\CryptoManager.cs" />
+    <Compile Include="CryptographyManager\Exception\CryptoManagerException.cs" />
+    <Compile Include="CryptographyManager\Exception\SHA1Exception.cs" />
+    <Compile Include="CryptographyManager\RandomPassword.cs" />
+    <Compile Include="CryptographyManager\SHA1Manager.cs" />
+    <Compile Include="CustomMembership\CustomMembershipProvider.cs" />
+    <Compile Include="CustomMembership\CustomRoleProvider.cs" />
+    <Compile Include="DAO\MembershipApplicationDAO.cs" />
+    <Compile Include="DAO\CustomRoleDAO.cs" />
+    <Compile Include="DAO\CustomUserDAO.cs" />
+    <Compile Include="NHibernateManager\Dao\BaseDAO.cs" />
+    <Compile Include="NHibernateManager\Helper\INHibernateMapper.cs" />
+    <Compile Include="NHibernateManager\Helper\NHibernateHelper.cs" />
+    <Compile Include="NHibernateManager\Helper\SessionHelper.cs" />
+    <Compile Include="NHibernateManager\Helper\SessionManagerFactory.cs" />
+    <Compile Include="NHibernateManager\NHibernateMembershipMapper.cs" />
+    <Compile Include="NHibernateManager\VO\BaseVO.cs" />
+    <Compile Include="NHibernateManager\WebApp\WebAppUtils.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Security\MembershipEncryptionManager.cs" />
+    <Compile Include="VO\MembershipApplication.cs" />
+    <Compile Include="VO\CustomRole.cs" />
+    <Compile Include="VO\CustomUser.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Mapping\CustomRole.hbm.xml">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Mapping\CustomUser.hbm.xml">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Mapping\MembershipApplication.hbm.xml">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
